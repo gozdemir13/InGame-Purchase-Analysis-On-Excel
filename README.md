@@ -1,6 +1,6 @@
 # InGame-Purchase-Analysis-On-Excel
 
-Description:
+
 This Excel project is designed to analyze game purchase data containing customer names, dates, game names, and purchase quantities.
  It groups the data by game and creates separate sheets for each game with corresponding purchase information. 
 The project also calculates the percentage change in purchases compared to the previous day and 
