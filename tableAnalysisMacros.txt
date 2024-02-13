@@ -1,0 +1,493 @@
+Sub GameBasedAnalysisMacro()
+Call GameBasedTable
+Call gameBasedAnalysisTable
+
+End Sub
+Sub GameBasedTable()
+
+    ActiveSheet.Range("$A$1:$D$217").AutoFilter Field:=3, Criteria1:="A"
+    Range("A:A,B:B,C:C,D:D").Select
+    Range("D1").Activate
+    Selection.Copy
+    Sheets.Add After:=ActiveSheet
+    ActiveSheet.Paste
+    Selection.Rows.AutoFit
+    Selection.Columns.AutoFit
+    Sheets("Sayfa1").Select
+    ActiveSheet.Range("$A$1:$D$217").AutoFilter Field:=3, Criteria1:="B"
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets.Add After:=ActiveSheet
+    ActiveSheet.Paste
+    Selection.Rows.AutoFit
+    Selection.Columns.AutoFit
+    Sheets("Sayfa1").Select
+    ActiveSheet.Range("$A$1:$D$217").AutoFilter Field:=3, Criteria1:="C"
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets.Add After:=ActiveSheet
+    ActiveSheet.Paste
+    Selection.Rows.AutoFit
+    Selection.Columns.AutoFit
+    Sheets("Sayfa1").Select
+    ActiveSheet.Range("$A$1:$D$217").AutoFilter Field:=3
+    Range("M11").Select
+    Application.Wait Now + TimeValue("00:00:02")
+End Sub
+
+
+Sub gameBasedAnalysisTable()
+
+    Sheets("Sayfa2").Select
+    Range("F1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Date"
+    Range("G1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("H1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Percentage Change"
+    Range("F2").Select
+    ActiveCell.FormulaR1C1 = "12/1/2023"
+    Range("F2").Select
+    Selection.AutoFill Destination:=Range("F2:F32"), Type:=xlFillDefault
+    Range("F2:F32").Select
+    Columns("F:F").ColumnWidth = 17
+    Columns("H:H").ColumnWidth = 22
+    Range("G2").Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[-6],RC[-1],C[-3])"
+    Range("G2").Select
+    Selection.AutoFill Destination:=Range("G2:G32"), Type:=xlFillDefault
+    Range("G2:G32").Select
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=0"
+    Range("H3").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=(RC[-1]-R[-1]C[-1])/R[-1]C[-1]"
+    Range("H3").Select
+    Selection.AutoFill Destination:=Range("H3:H32"), Type:=xlFillDefault
+    Range("H3:H32").Select
+    Range("H2:H32").Select
+    Selection.Style = "Percent"
+    Range("F1:H32").Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$F$1:$H$32"), , xlYes).Name = _
+        "Tablo7"
+    Range("Tablo7[#All]").Select
+    ActiveSheet.ListObjects("Tablo7").TableStyle = "TableStyleLight21"
+
+
+    Sheets("Sayfa3").Select
+    Range("F1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Date"
+    Range("G1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("H1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Percentage Change"
+    Range("F2").Select
+    ActiveCell.FormulaR1C1 = "12/1/2023"
+    Range("F2").Select
+    Selection.AutoFill Destination:=Range("F2:F32"), Type:=xlFillDefault
+    Range("F2:F32").Select
+    Columns("F:F").ColumnWidth = 17
+    Columns("H:H").ColumnWidth = 22
+    Range("G2").Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[-6],RC[-1],C[-3])"
+    Range("G2").Select
+    Selection.AutoFill Destination:=Range("G2:G32"), Type:=xlFillDefault
+    Range("G2:G32").Select
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=0"
+    Range("H3").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=(RC[-1]-R[-1]C[-1])/R[-1]C[-1]"
+    Range("H3").Select
+    Selection.AutoFill Destination:=Range("H3:H32"), Type:=xlFillDefault
+    Range("H3:H32").Select
+    Range("H2:H32").Select
+    Selection.Style = "Percent"
+    Range("F1:H32").Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$F$1:$H$32"), , xlYes).Name = _
+        "Tablo8"
+    Range("Tablo8[#All]").Select
+    ActiveSheet.ListObjects("Tablo8").TableStyle = "TableStyleLight21"
+
+
+    Sheets("Sayfa4").Select
+    Range("F1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Date"
+    Range("G1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("H1").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = -0.249977111117893
+        .PatternTintAndShade = 0
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    ActiveCell.FormulaR1C1 = "Percentage Change"
+    Range("F2").Select
+    ActiveCell.FormulaR1C1 = "12/1/2023"
+    Range("F2").Select
+    Selection.AutoFill Destination:=Range("F2:F32"), Type:=xlFillDefault
+    Range("F2:F32").Select
+    Columns("F:F").ColumnWidth = 17
+    Columns("H:H").ColumnWidth = 22
+    Range("G2").Select
+    ActiveCell.FormulaR1C1 = "=SUMIF(C[-6],RC[-1],C[-3])"
+    Range("G2").Select
+    Selection.AutoFill Destination:=Range("G2:G32"), Type:=xlFillDefault
+    Range("G2:G32").Select
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=0"
+    Range("H3").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=(RC[-1]-R[-1]C[-1])/R[-1]C[-1]"
+    Range("H3").Select
+    Selection.AutoFill Destination:=Range("H3:H32"), Type:=xlFillDefault
+    Range("H3:H32").Select
+    Range("H2:H32").Select
+    Selection.Style = "Percent"
+    Range("F1:H32").Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$F$1:$H$32"), , xlYes).Name = _
+        "Tablo9"
+    Range("Tablo9[#All]").Select
+    ActiveSheet.ListObjects("Tablo9").TableStyle = "TableStyleLight21"
+
+End Sub
+
+Sub total_sales_analysis_table()
+
+Sheets.Add After:=ActiveSheet
+    ActiveCell.FormulaR1C1 = "Game Name"
+    Range("B1").Select
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("C1").Select
+    ActiveCell.FormulaR1C1 = "Share Of The Total"
+    Range("A2").Select
+    ActiveCell.FormulaR1C1 = "A"
+    Range("A3").Select
+    ActiveCell.FormulaR1C1 = "B"
+    Range("A4").Select
+    ActiveCell.FormulaR1C1 = "C"
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = "=SUM(Tablo7[Total])"
+    Range("B3").Select
+    ActiveCell.FormulaR1C1 = "=SUM(Tablo8[Total])"
+    Range("B4").Select
+    ActiveCell.FormulaR1C1 = "=SUM(Tablo9[Total])"
+    Range("C2").Select
+    ActiveCell.FormulaR1C1 = "=RC[-1]/(RC[-1]+R[1]C[-1]+R[2]C[-1])"
+    Range("C3").Select
+    ActiveCell.FormulaR1C1 = "=RC[-1]/(R[-1]C[-1]+RC[-1]+R[1]C[-1])"
+    Range("C4").Select
+    ActiveCell.FormulaR1C1 = "=RC[-1]/(R[-2]C[-1]+R[-1]C[-1]+RC[-1])"
+    Range("C2:C4").Select
+    Selection.Style = "Percent"
+    Range("A1:C4").Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$A$1:$C$4"), , xlYes).Name = _
+        "Tablo4"
+    Range("Tablo4[#All]").Select
+    ActiveSheet.ListObjects("Tablo4").TableStyle = "TableStyleLight21"
+    Range("F1").Select
+    ActiveCell.FormulaR1C1 = "Date"
+    Range("G1").Select
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("H1").Select
+    ActiveCell.FormulaR1C1 = "Percentage Change"
+    Range("F2").Select
+    ActiveCell.FormulaR1C1 = "12/1/2023"
+    Range("F2").Select
+    Selection.AutoFill Destination:=Range("F2:F32"), Type:=xlFillDefault
+    Range("F2:F32").Select
+    Columns("F:F").ColumnWidth = 10.2
+    Range("G2").Select
+    ActiveCell.FormulaR1C1 = _
+        "=SUM(Tablo7[@Total],Tablo8[@Total],Tablo9[@Total])"
+    Range("G2").Select
+    Selection.AutoFill Destination:=Range("G2:G32"), Type:=xlFillDefault
+    Range("G2:G32").Select
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "=0"
+    Range("H3").Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=(RC[-1]-R[-1]C[-1])/R[-1]C[-1]"
+    Range("H3").Select
+    Selection.AutoFill Destination:=Range("H3:H32"), Type:=xlFillDefault
+    Range("H3:H32").Select
+    Range("H2:H32").Select
+    Selection.Style = "Percent"
+    Range("F1:H32").Select
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range("$F$1:$H$32"), , xlYes).Name = _
+        "Tablo5"
+    Range("Tablo5[#All]").Select
+    ActiveSheet.ListObjects("Tablo5").TableStyle = "TableStyleLight21"
+End Sub
+
+

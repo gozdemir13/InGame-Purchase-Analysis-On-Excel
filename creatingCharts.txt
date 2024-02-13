@@ -1,0 +1,80 @@
+Sub CreateChartsForGames()
+   ' Declare variables
+    Dim wsht As Worksheet
+    Dim chartObject As chartObject
+
+    ' Set the worksheet to "Sheet2, in turkish its called "sayfa2" "
+    Set wsht = ThisWorkbook.Sheets("Sayfa2")
+
+    ' Create a new chart object on the worksheet
+    Set chartObject = wsht.ChartObjects.Add(Left:=wsht.Range("J2").Left, Top:=wsht.Range("J2").Top, Width:=500, Height:=350)
+
+    ' Set the source data range for the chart
+    chartObject.Chart.SetSourceData Source:=wsht.Range("Sayfa2!$F$1:$H$32")
+
+    ' Set the chart type for the first series (clustered column)
+    chartObject.Chart.FullSeriesCollection(1).ChartType = xlColumnClustered
+
+    ' Set the axis group for the first series
+    chartObject.Chart.FullSeriesCollection(1).AxisGroup = 1
+
+    ' Set the chart type for the second series (line)
+    chartObject.Chart.FullSeriesCollection(2).ChartType = xlLine
+
+    ' Set the axis group for the second series
+    chartObject.Chart.FullSeriesCollection(2).AxisGroup = 2
+    
+     Set wsht2 = ThisWorkbook.Sheets("Sayfa3")
+     Set chartObject = wsht2.ChartObjects.Add(Left:=wsht2.Range("J2").Left, Top:=wsht2.Range("J2").Top, Width:=500, Height:=350)
+     chartObject.Chart.SetSourceData Source:=wsht2.Range("Sayfa3!$F$1:$H$32")
+     chartObject.Chart.FullSeriesCollection(1).ChartType = xlColumnClustered
+     chartObject.Chart.FullSeriesCollection(1).AxisGroup = 1
+     chartObject.Chart.FullSeriesCollection(2).ChartType = xlLine
+     chartObject.Chart.FullSeriesCollection(2).AxisGroup = 2
+     
+     Set wsht3 = ThisWorkbook.Sheets("Sayfa4")
+     Set chartObject = wsht3.ChartObjects.Add(Left:=wsht3.Range("J2").Left, Top:=wsht3.Range("J2").Top, Width:=500, Height:=350)
+     chartObject.Chart.SetSourceData Source:=wsht3.Range("Sayfa4!$F$1:$H$32")
+     chartObject.Chart.FullSeriesCollection(1).ChartType = xlColumnClustered
+     chartObject.Chart.FullSeriesCollection(1).AxisGroup = 1
+     chartObject.Chart.FullSeriesCollection(2).ChartType = xlLine
+     chartObject.Chart.FullSeriesCollection(2).AxisGroup = 2
+     
+     Set wsht4 = ThisWorkbook.Sheets("Sayfa5")
+     Set chartObject = wsht4.ChartObjects.Add(Left:=wsht4.Range("J2").Left, Top:=wsht4.Range("J2").Top, Width:=500, Height:=350)
+     chartObject.Chart.SetSourceData Source:=wsht4.Range("Sayfa5!$F$1:$H$32")
+     chartObject.Chart.FullSeriesCollection(1).ChartType = xlColumnClustered
+     chartObject.Chart.FullSeriesCollection(1).AxisGroup = 1
+     chartObject.Chart.FullSeriesCollection(2).ChartType = xlLine
+     chartObject.Chart.FullSeriesCollection(2).AxisGroup = 2
+     
+               
+End Sub
+
+Sub createPieChart()
+    ' Declare variables
+    Dim chartsSheet As chartObject
+    Dim dataInterval As Range
+    Dim chartsPosition As Range
+
+    ' Set the data range for the pie chart
+    Set dataInterval = Sheets("Sayfa5").Range("$A$1:$C$4")
+
+    ' Set the position for the pie chart
+    Set chartsPosition = Sheets("Sayfa5").Range("A8")
+
+    ' Create a new chart object on the worksheet
+    Set chartsSheet = chartsPosition.Parent.ChartObjects.Add(Left:=chartsPosition.Left, _
+        Width:=275, Top:=chartsPosition.Top, Height:=225)
+
+    ' Set the chart type to Pie
+    chartsSheet.Chart.ChartType = xlPie
+
+    ' Set the source data range for the chart
+    chartsSheet.Chart.SetSourceData Source:=dataInterval
+
+    ' Activate the chart sheet
+    chartsSheet.Activate
+End Sub
+
+
