@@ -6,13 +6,13 @@ This Excel project is designed to analyze game purchase data containing customer
 The project also calculates the percentage change in purchases compared to the previous day and 
 visualizes the results through graphs for better understanding.
 
-Features:
+# Features:
 - Grouping game data into separate sheets.
 - Calculating percentage change in purchases compared to the previous day.
 - Creating graphs to visualize purchase trends.
 - It converts to PDF and sends to the emails you listed.
 
-- Usage :
+# Usage :
 
 - Open the Excel file containing the example data that I created.
 - Press the buttons step by step; everything the macro does is written on the buttons.
